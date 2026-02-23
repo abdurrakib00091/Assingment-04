@@ -265,3 +265,60 @@
         updateActiveTab();
       }
     </script>
+        <script>
+      // Update job status
+      function updateStatus(id, status) {
+        jobs = jobs.map((job) => {
+          if (job.id === id) {
+            job.status = status;
+          }
+          return job;
+        });
+        renderJobs();
+      }
+
+      // Delete job
+      function deleteJob(id) {
+        jobs = jobs.filter((job) => job.id !== id);
+        renderJobs();
+      }
+
+      // Update counts in dashboard
+      function updateCounts() {
+        document.getElementById("allCount").innerText = jobs.length;
+        document.getElementById("interviewCount").innerText = jobs.filter(
+          (job) => job.status === "interview"
+        ).length;
+        document.getElementById("rejectedCount").innerText = jobs.filter(
+          (job) => job.status === "rejected"
+        ).length;
+      }
+
+      // Tab switching
+      function showTab(tab) {
+        currentTab = tab;
+        renderJobs();
+      }
+
+      function resetToAll() {
+        currentTab = "all";
+        renderJobs();
+      }
+
+      // Update active tab styling
+      function updateActiveTab() {
+        document.querySelectorAll(".tabBtn").forEach((btn) => {
+          btn.classList.remove("bg-blue-500", "text-white");
+          btn.classList.add("bg-gray-200");
+        });
+
+        const active = document.getElementById(`tab-${currentTab}`);
+        active.classList.remove("bg-gray-200");
+        active.classList.add("bg-blue-500", "text-white");
+      }
+
+      // Initialize
+      renderJobs();
+    </script>
+  </body>
+</html>
