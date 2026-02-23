@@ -41,4 +41,51 @@
           <p id="rejectedCount" class="text-2xl font-bold text-red-600">0</p>
         </div>
       </div>
-      
+            <!-- Header -->
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">Available Jobs</h2>
+        <button
+          onclick="resetToAll()"
+          id="jobCountBtn"
+          class="text-blue-600 font-medium hover:underline"
+        >
+          0 Jobs
+        </button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex gap-4 mb-6">
+        <button
+          onclick="showTab('all')"
+          id="tab-all"
+          class="tabBtn px-4 py-2 rounded bg-blue-500 text-white"
+        >
+          All
+        </button>
+
+        <button
+          onclick="showTab('interview')"
+          id="tab-interview"
+          class="tabBtn px-4 py-2 rounded bg-gray-200"
+        >
+          Interview
+        </button>
+
+        <button
+          onclick="showTab('rejected')"
+          id="tab-rejected"
+          class="tabBtn px-4 py-2 rounded bg-gray-200"
+        >
+          Rejected
+        </button>
+      </div>
+
+      <!-- Jobs Container -->
+      <div id="jobContainer" class="grid grid-cols-1 gap-6"></div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden text-center mt-10">
+        <div class="text-5xl mb-4">📂</div>
+        <h3 class="text-xl font-semibold">No Jobs Available</h3>
+      </div>
+    </div>
